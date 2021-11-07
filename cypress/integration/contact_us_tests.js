@@ -9,8 +9,9 @@ describe("Test contact us form",()=>{
         contact_us_page.goToContactForm()
     })
 
-    it("The user sends the contact form",()=>{
-
+    it.only("The user sends the contact form",()=>{
+        contact_us_page.sendFormWithBasicData('Webmaster','test@test.com','Lorem ipsum')
+        contact_us_page.assertThatAlertSuccessContainsGivenText('Your message has been successfully sent to our team.')
     })
 
     it("The user sends the contact form without message content",()=>{
@@ -22,6 +23,6 @@ describe("Test contact us form",()=>{
     })
 
     it("The user sends the contact form without subject heading",()=>{
-        
+
     })
 })
