@@ -15,15 +15,18 @@ describe("Test contact us form",()=>{
     })
 
     it("The user sends the contact form without message content",()=>{
+        contact_us_page.sendFormWithBasicDataWithoutContent('Webmaster','test@test.com')
+        contact_us_page.assertThatErrorAlertContainsGivenText('The message cannot be blank.')
 
     })
 
-    it.only("The user sends the contact form without email",()=>{
+    it("The user sends the contact form without email",()=>{
         contact_us_page.sendFormWithBasicDataWithoutEmail('Webmaster','Lorem ipsum')
         contact_us_page.assertThatErrorAlertContainsGivenText("Invalid email address.")
     })
 
     it("The user sends the contact form without subject heading",()=>{
-
+        contact_us_page.sendFormWithBasicDataWithoutSubjectMessage('test@test.com','Lorem ipsum')
+        contact_us_page.assertThatErrorAlertContainsGivenText('Please select a subject from the list provided. ')
     })
 })

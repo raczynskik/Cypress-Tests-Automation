@@ -19,6 +19,18 @@ class Contact_us_page {
         cy.get('#submitMessage').click()
     }
 
+    sendFormWithBasicDataWithoutContent(subjectMessage,email){
+        cy.get('#id_contact').select(subjectMessage)
+        cy.get('#email').type(email)
+        cy.get('#submitMessage').click()
+    }
+
+    sendFormWithBasicDataWithoutSubjectMessage(email,messageContent){
+        cy.get('#email').type(email)
+        cy.get('#message').type(messageContent)
+        cy.get('#submitMessage').click()
+    }
+
     assertThatAlertSuccessContainsGivenText(expectedText){
         cy.get("p[class='alert alert-success']").should('have.text',expectedText)
     }
