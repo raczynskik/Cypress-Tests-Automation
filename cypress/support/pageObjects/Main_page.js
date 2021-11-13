@@ -6,9 +6,12 @@ class Main_page {
         cy.visit('http://automationpractice.com/index.php')
     }
 
-    enterEmailToNewsletterInput(email){
-        cy.get('#newsletter-input').type(email).type('{enter}')
+    assertThatSuccessAlertHaveCorrectContent(expectedText){
+        cy.get('.alert-success').should('have.text',expectedText)
+    }
 
+    assertThatDangerAlertHaveCorrectContent(expectedText){
+        cy.get('.alert-danger').should('have.text',expectedText)
     }
 }
 
